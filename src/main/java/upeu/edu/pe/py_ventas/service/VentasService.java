@@ -11,7 +11,7 @@ import upeu.edu.pe.py_ventas.daoimpl.VentasDaoimpl;
 import upeu.edu.pe.py_ventas.entity.Ventas;
 
 @Service
-public class VentasService implements Operaciones<Ventas> {
+public class VentasService implements Operaciones<Ventas>{
 
 	@Autowired
 	private VentasDaoimpl daoimpl;

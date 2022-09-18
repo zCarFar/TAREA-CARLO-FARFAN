@@ -26,11 +26,13 @@ public class VentasContoller {
 	public List<Ventas> readAll(){
 		return service.reAll();
 	}
+	
 	@GetMapping("/{id}")
 	public Ventas read(@PathVariable int id) {
 		return service.read(id);
 		
 	}
+	
 	
 	@PostMapping("/save")
 	public int save(@RequestBody Ventas venta) {
@@ -41,7 +43,7 @@ public class VentasContoller {
 	public int update(@PathVariable int id, @RequestBody Ventas venta) {
 		
 		Ventas v = service.read(id);
-		v.setFecha("2003-09-12");
+		v.setFecha("2022-09-18");
 		return service.update(v);
 		
 	}

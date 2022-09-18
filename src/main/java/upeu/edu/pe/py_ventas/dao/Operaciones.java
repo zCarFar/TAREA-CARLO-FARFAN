@@ -3,7 +3,7 @@ package upeu.edu.pe.py_ventas.dao;
 import java.util.List;
 import java.util.Map;
 
-public interface Operaciones <T>{
+public interface Operaciones<T>{
 	
 	int create(T t);
 	int update(T t);

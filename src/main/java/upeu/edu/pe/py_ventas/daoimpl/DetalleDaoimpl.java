@@ -15,21 +15,23 @@ import upeu.edu.pe.py_ventas.entity.Detalle;
 @Component
 public class DetalleDaoimpl implements Operaciones<Detalle> {
 
+	
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
 	@Override
 	public int create(Detalle t) {
 		// TODO Auto-generated method stub
-		String SQL ="INSERT INTO detalle(idventas, idproducto, idprecio, cantidad) VALUES(?,?,?)";
-		return jdbcTemplate.update(SQL, t.getIdventas(), t.getIdproducto(), t.getCantidad());
+		String SQL ="INSERT INTO detalle(idventas, idproducto, precio, cantidad) VALUES(?,?,?)";
+		return jdbcTemplate.update(SQL, t.getIdventas(), t.getIdproducto(), t.getPrecio(),t.getCantidad());
 	}
 
 	@Override
 	public int update(Detalle t) {
 		// TODO Auto-generated method stub
-		String SQL="UPDATE detalle SET cantidad =? WHERE(iddetalle=?)";
-		return jdbcTemplate.update(SQL, t.getCantidad(), t.getIddetalle());
+		String SQL="UPDATE detalle SET cantidad = ? WHERE(iddetalle=?)";
+		return jdbcTemplate.update(SQL, t.getCantidad(), t.getPrecio(),t.getIddetalle());
 	}
 
 	@Override
@@ -62,9 +64,9 @@ public class DetalleDaoimpl implements Operaciones<Detalle> {
 	@Override
 	public List<Map<String, Object>> readAll2() {
 		// TODO Auto-generated method stub
-		String SQL ="SELECT v.idventas, v.fecha, p.idproducto, p.nombre, d.precio, d.cantidad FROM detalle as d"
+		String SQL ="SELECT v.idventas, v.fecha, p.idproducto, p.nombre, p.precio, p.cantidad, d.precio, d.cantidad FROM detalle as d"
 		+ "inner join ventas as v on d.idventas= v.idventas"
-		+ "inner join producto as p on d.producto= p.idproducto ";
+		+ "inner join producto as p on d.idproducto= p.idproducto ";
 		return jdbcTemplate.queryForList(SQL);
 	}
 

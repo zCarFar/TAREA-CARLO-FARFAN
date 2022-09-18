@@ -20,14 +20,14 @@ public class ProductoDaoimpl implements Operaciones<Producto> {
 	@Override
 	public int create(Producto t) {
 		// TODO Auto-generated method stub
-		String SQL = "INERT INTO(nombre, precio, stock) VALUES(?,?,?)";
+		String SQL = "INERT INTO producto(nombre, precio, cantidad) VALUES(?,?,?)";
 		return jdbcTemplate.update(SQL, t.getNombre(), t.getPrecio(), t.getCantidad());
 	}
 
 	@Override
 	public int update(Producto t) {
 		// TODO Auto-generated method stub
-		String SQL = "INERT INTO(nombre, precio, stock) VALUES(?,?,?)";
+		String SQL = "INERT INTO producto(nombre, precio, cantidad) VALUES(?,?,?)";
 		return jdbcTemplate.update(SQL, t.getNombre(), t.getPrecio(), t.getCantidad());
 	}
 
@@ -41,8 +41,7 @@ public class ProductoDaoimpl implements Operaciones<Producto> {
 	@Override
 	public Producto read(int id) {
 		// TODO Auto-generated method stub
-		try {
-	 
+	try { 
 	Producto Prod = jdbcTemplate.queryForObject("SELECT * FROM productos WHERE idproductos=?",
 	BeanPropertyRowMapper.newInstance(Producto.class), id);
 	return Prod;
@@ -54,7 +53,7 @@ public class ProductoDaoimpl implements Operaciones<Producto> {
 	@Override
 	public List<Producto> reAll() {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.query("SELECT * FROM productos",
+		return jdbcTemplate.query("SELECT * FROM producto",
 		BeanPropertyRowMapper.newInstance(Producto.class));
 	}
 	
